@@ -35,5 +35,27 @@ router.get('/orders', async(req,res,next)=>{
         console.log(e);
     }
 })
+//-- Find all customers that live in London, Madrid, or Brazil
+router.get('/findCustomers', async(req,res,next) =>{
+    try{
+        const data = await Budget.findCustomers();
+        console.log(data);
+        next(data)
+    }catch(e){
+        console.log(e);
+    }
+})
+//-- Add a customer record
+router.post('/addCustomer',async(req,res,next)=>{
+    try{
+        const data = await Budget.insertCustomer();
+        console.log(data);
+        next(data);
+    }
+    catch(e){
+        console.log(e)
+    }
+})
+
 
 module.exports = router;
